@@ -5,6 +5,11 @@ public class SizesRestControllerIT {
     @LocalServerPort
     int port;
 
+    @Before
+    public void setUp() {
+        RestAssured.port = port;
+    }
+
     @Test
     public void test2() throws InterruptedException {
         given().port(port).basePath("/clothes").get("").then().statusCode(200);
